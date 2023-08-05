@@ -1,5 +1,13 @@
 <?php
+session_start();
 require_once('Model/Database.php');
+$userprofile = $_SESSION['username'];
+echo $_SESSION['username'];
+if ($userprofile == true) {
+} else {
+    header('localhost:login.php');
+}
+
 
 
 $database = new Database();

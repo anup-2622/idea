@@ -11,13 +11,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $repassword = $_POST['repassword'];
+    if ($password == $repassword) {
+        $sql_query = $conn->query("INSERT INTO login (name, username, password) VALUES ('$name', '$email' , '$password'  )");
 
-    $sql_query = $conn->query("INSERT INTO login (name, username, password, repassword) VALUES ('$name', '$email' , '$password', '$repassword'  )");
-
-    if ($sql_query) {
-        header("location:login.php");
+        if ($sql_query) {
+            header("location:login.php");
+        } else {
+            echo "error";
+        }
     } else {
-        echo "error";
+        echo '
+    <script type="text/javascript">
+    alert("password and repassword does not match ");
+</script>';
     }
 }
 ?>

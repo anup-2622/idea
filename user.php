@@ -1,23 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php
+session_start();
 require_once('Model/Database.php');
+// echo "welcome" . $_SESSION['username'];
 
 
 
 
 $database = new Database();
 $conn = $database->getConnection();
+
+$userprofile = $_SESSION['username'];
+if ($userprofile == true) {
+} else {
+    header('location:login.php');
+}
 ?>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Images</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+
 </head>
 
 <body>
-    <h6>hello users</h6>
+    <h2>hello users</h2>
     <?php
     $myalbumlist = "SELECT * FROM gallery_albums";
     $result = $conn->query($myalbumlist);

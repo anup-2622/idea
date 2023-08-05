@@ -5,13 +5,6 @@ session_start();
 
 require_once('Model/Database.php');
 
-
-if (isset($_SESSION['user_id'])) {
-    header("Location: index.php");
-    exit;
-}
-
-
 $database = new Database();
 $conn = $database->getConnection();
 
@@ -25,9 +18,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $row = mysqli_fetch_array($result);
 
     if ($row['userType'] == "user") {
+        $_SESSION['username'] = $username;
         header("location:user.php");
     } else if ($row['userType'] == "admin") {
-
+        $_SESSION['username'] = $username;
         header("location:admin.php");
     } else {
         echo "username or password not ";

@@ -1,0 +1,46 @@
+.admin {
+    /* padding: 4px; */
+    width: 100vw;
+    overflow: hidden;
+
+}
+
+.grid-container {
+    display: grid;
+    gap: 10px 20px;
+    grid-template-columns: auto auto auto;
+    background-color: white;
+    padding: 10px 0;
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-arou; */
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 9px;
+    border-radius: 10px;
+    font-size: px;
+    text-align: center;
+}
+
+.album-icon {
+    width: 30%;
+
+}
+
+.album-data {
+    width: 70%;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* border: 3px solid black; */
+    /* justify-content: start; */
+}
+
+.album-data>a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    font-size: 1.3rem;
+}

@@ -1,7 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php
+session_start();
+
 require_once('Model/Database.php');
+$userprofile = $_SESSION['username'];
+if ($userprofile == true) {
+} else {
+    header('localhost:login.php');
+}
 
 
 $database = new Database();
@@ -14,6 +19,9 @@ if (isset($_GET['album_id'])) {
     header("Location: admin.php");
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
