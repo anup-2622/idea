@@ -9,10 +9,11 @@ $conn = $database->getConnection();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $email = $_POST['email'];
+    $userType = $_POST['userType'];
     $password = $_POST['password'];
     $repassword = $_POST['repassword'];
     if ($password == $repassword) {
-        $sql_query = $conn->query("INSERT INTO login (name, username, password) VALUES ('$name', '$email' , '$password'  )");
+        $sql_query = $conn->query("INSERT INTO login (name, username, password , userType) VALUES ('$name', '$email', '$password','$userType'   )");
 
         if ($sql_query) {
             header("location:login.php");
@@ -72,6 +73,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
                                                 <input type="text" class="form-control" name="email" placeholder="Enter Email">
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <label>User Type<span class="text-danger text-xs">'if your do not want
+                                                    premium leave
+                                                    it '</span></label>
+                                            <div class="input-group">
+                                                <select name="userType" class="form-control" id="">
+                                                    <option value="user" class="form-control">Noramal User</option>
+                                                    <option value="premium_user" class="form-control">Premium User
+                                                    </option>
+                                                    <option value="admin" class="form-control">Amdin</option>
+                                                </select>
+
                                             </div>
                                         </div>
 

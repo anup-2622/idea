@@ -19,10 +19,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($row['userType'] == "user") {
         $_SESSION['username'] = $username;
+        $_SESSION['userType'] = $row['userType'];
+
         header("location:user.php");
     } else if ($row['userType'] == "admin") {
         $_SESSION['username'] = $username;
+        $_SESSION['userType'] = $row['userType'];
         header("location:admin.php");
+    } else if ($row['userType'] == "premium_user") {
+        $_SESSION['username'] = $username;
+        $_SESSION['userType'] = $row['userType'];
+        header('location:user.php');
     } else {
         echo "username or password not ";
     }

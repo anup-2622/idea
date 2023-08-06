@@ -4,10 +4,11 @@ session_start();
 
 
 require_once('Model/Database.php');
-// echo "welcome" . $_SESSION['username'];
+// echo "welcome" . $_SESSION['userType'];
 
 $database = new Database();
 $conn = $database->getConnection();
+
 
 
 $userprofile = $_SESSION['username'];

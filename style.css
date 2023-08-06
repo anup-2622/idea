@@ -25,6 +25,27 @@
     text-align: center;
 }
 
+.grid-container-userview {
+    display: grid;
+    gap: 10px 10px;
+    grid-template-columns: auto auto auto;
+    background-color: white;
+    padding: 10px 0;
+
+}
+
+.grid-userview {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-arou; */
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 9px;
+    border-radius: 10px;
+    font-size: px;
+    text-align: center;
+}
+
 .album-icon {
     width: 30%;
 
