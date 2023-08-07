@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <div class="form-right h-100 bg-primary text-white text-center pt-5">
                                     <i class="bi bi-bootstrap"></i>
                                     <br>
-                                    <a class="text-white" href="login.php">Login</a>
+                                    <a class="text-white btn btn-outline-info" href="login.php">Login</a>
                                 </div>
                             </div>
                             <div class="col-md-7 pe-0">
@@ -65,20 +65,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <label>Name<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                <input type="text" class="form-control" name="name" placeholder="Enter Name">
+                                                <input type="text" class="form-control" name="name"
+                                                    placeholder="Enter Name">
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <label>email<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                <input type="text" class="form-control" name="email" placeholder="Enter Email">
+                                                <input type="text" class="form-control" name="email"
+                                                    placeholder="Enter Email">
                                             </div>
                                         </div>
                                         <div class="col-12">
-                                            <label>User Type<span class="text-danger text-xs">'if your do not want
-                                                    premium leave
-                                                    it '</span></label>
+                                            <label>User Type<span class="text-danger text-xs"></span></label>
                                             <div class="input-group">
                                                 <select name="userType" class="form-control" id="">
                                                     <option value="user" class="form-control">Noramal User</option>
@@ -94,14 +94,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <label>Password<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                                                <input type="password" class="form-control" name="password" placeholder="Enter Password">
+                                                <input type="password" class="form-control" name="password"
+                                                    placeholder="Enter Password">
                                             </div>
                                         </div>
                                         <div class="col-12">
                                             <label>Re-Password<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                                                <input type="password" class="form-control" name="repassword" placeholder="Enter Re-Password">
+                                                <input type="password" class="form-control" name="repassword"
+                                                    placeholder="Enter Re-Password">
                                             </div>
                                         </div>
 
@@ -118,7 +120,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         </div> -->
 
                                         <div class="col-12">
-                                            <button type="submit" class="btn btn-primary px-4 float-end mt-4">SignUp</button>
+                                            <button type="submit"
+                                                class="btn btn-primary px-4 float-end mt-4">SignUp</button>
                                         </div>
                                     </form>
                                 </div>

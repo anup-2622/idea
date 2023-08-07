@@ -65,7 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <label>Username<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                <input type="text" class="form-control" name="username" placeholder="Enter Username">
+                                                <input type="text" class="form-control" name="username"
+                                                    placeholder="Enter Username">
                                             </div>
                                         </div>
 
@@ -73,7 +74,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <label>Password<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                                                <input type="password" class="form-control" name="password" placeholder="Enter Password">
+                                                <input type="password" class="form-control" name="password"
+                                                    placeholder="Enter Password">
                                             </div>
                                         </div>
 
@@ -85,12 +87,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-6">
-                                            <a href="#" class="float-end text-primary">Forgot Password?</a>
-                                        </div>
+
 
                                         <div class="col-12">
-                                            <button type="submit" class="btn btn-primary px-4 float-end mt-4">login</button>
+                                            <button type="submit"
+                                                class="btn btn-primary px-4 float-end mt-4">login</button>
                                         </div>
                                     </form>
                                 </div>
@@ -99,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <div class="form-right h-100 bg-primary text-white text-center pt-5">
                                     <i class="bi bi-bootstrap"></i>
                                     <br>
-                                    <a style="color: white;" href="signup.php">Sign Up</a>
+                                    <a class="btn btn-outline-info" style="color: white;" href="signup.php">Sign Up</a>
                                 </div>
                             </div>
                         </div>
