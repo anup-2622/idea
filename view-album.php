@@ -189,8 +189,8 @@ if (isset($_POST['upload_photo'])) {
 
 
         <?php
-            $photos = $conn->query("SELECT * FROM gallery_photos WHERE album_id = $album_id");
-            while ($photo_data = $photos->fetch_assoc()) { ?>
+        $photos = $conn->query("SELECT * FROM gallery_photos WHERE album_id = $album_id");
+        while ($photo_data = $photos->fetch_assoc()) { ?>
         <div class="mySlides fade">
             <div class="numbertext">1 / 3</div>
             <img src="images/<?php echo $photo_data['photo_link'] ?>" width="300px" height="200px" />
@@ -198,7 +198,7 @@ if (isset($_POST['upload_photo'])) {
             <div class="text">Caption Text</div>
         </div>
         <?php }
-            ?>
+        ?>
         <!-- </div> -->
         <a class="prev" onclick="plusSlides(-1)">❮</a>
         <a class="next" onclick="plusSlides(1)">❯</a>
