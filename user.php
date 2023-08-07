@@ -10,6 +10,7 @@ $database = new Database();
 $conn = $database->getConnection();
 
 $userType = $_SESSION['userType'];
+// echo $userType;
 
 $userprofile = $_SESSION['username'];
 if ($userprofile == true) {
@@ -36,37 +37,33 @@ if ($userprofile == true) {
     include 'navbar.php';
     ?>
     <div class="admin">
+
+
+
         <div class="grid-container container  mt-2">
 
             <?php
 
-
-            $myalbumlist = "SELECT * FROM gallery_albums";
-            $result = $conn->query($myalbumlist);
-
-            if ($userType == 'user') {
+            if ($userType == 'premium_user') {
+                $myalbumlist = "SELECT * FROM gallery_albums ";
+                $result = $conn->query($myalbumlist);
                 while ($album_data = $result->fetch_assoc()) {
-
-
-                    $photos = $conn->query("SELECT * FROM gallery_photos WHERE album_id  = '' "); ?>
-                    <!-- $photos = $conn->query("SELECT * FROM gallery_photos WHERE album_id = " . $album_data['album_id'] . "");  -->
-
+                    $photos = $conn->query("SELECT * FROM gallery_photos WHERE album_id = " . $album_data['album_id'] . ""); ?>
                     <div class="grid-item">
 
                         <div class="album-icon ">
+                            <!-- <h5>NORMAL USER</h5> -->
                             <i class="fa-solid fa-folder fa-5x"></i>
 
                         </div>
                         <div class="album-data  ">
 
                             <!-- <b>#<?php echo $album_data['album_id'] ?></b> -->
-                            <a href="view-album.php?album_id=<?php echo $album_data['album_id'] ?>"><?php echo $album_data['album_name'] ?>
+                            <a href="user_view_album.php?album_id=<?php echo $album_data['album_id'] ?>"><?php echo $album_data['album_name'] ?>
 
                             </a>
 
                             <?php
-                            // echo "<input type='radio' name='status' value='1' " . ($album_data['publish'] == 1 ? "checked" : "") . ">Publish ";
-                            // echo "<input type='radio' name='status' value='0' " . ($album_data['publish'] == 0 ? "checked" : "") . ">Unpubl  ish ";
                             ?>
                             (<?php echo $photos->num_rows; ?>)<br><br>
 
@@ -74,13 +71,11 @@ if ($userprofile == true) {
                         </div>
 
                     </div>
-                <?php
-                }
-            } else {
+                <?php }
+            } else if ($userType == 'user') {
+                $myalbumlist = "SELECT * FROM gallery_albums where publish = 0";
+                $result = $conn->query($myalbumlist);
                 while ($album_data = $result->fetch_assoc()) {
-
-
-                    // $photos = $conn->query("SELECT * FROM gallery_photos WHERE album_id  = 0 "); 
                     $photos = $conn->query("SELECT * FROM gallery_photos WHERE album_id = " . $album_data['album_id'] . ""); ?>
                     <div class="grid-item">
 
@@ -91,11 +86,12 @@ if ($userprofile == true) {
                         <div class="album-data  ">
 
                             <!-- <b>#<?php echo $album_data['album_id'] ?></b> -->
-                            <a href="view-album.php?album_id=<?php echo $album_data['album_id'] ?>"><?php echo $album_data['album_name'] ?>
+                            <a href="user_view_album.php?album_id=<?php echo $album_data['album_id'] ?>"><?php echo $album_data['album_name'] ?>
 
                             </a>
 
-
+                            <?php
+                            ?>
                             (<?php echo $photos->num_rows; ?>)<br><br>
 
                             <?php echo $album_data['description'] ?>
