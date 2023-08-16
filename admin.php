@@ -16,6 +16,18 @@ if ($userprofile == true) {
 } else {
     header('location:login.php');
 }
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    $id = $_POST['id'];
+    $publish = $_POST['publish'];
+
+    $pulish_query = "UPDATE gallery_albums SET publish = '$publish' WHERE  album_id = '$id'";
+
+    $result = mysqli_query($conn, $pulish_query);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +38,8 @@ if ($userprofile == true) {
     <title>Gallery</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+
     <!-- <link rel="stylesheet" href="login.css"> -->
     <link rel="stylesheet" href="style.css">
 
@@ -45,12 +59,14 @@ if ($userprofile == true) {
                 <div class="row">
                     <div class="col-3 mb-3">
                         <label for="ablum_title" class="form-label">Album Title</label>
-                        <input type="text" class="form-control" id="ablum_des" name="album_name" placeholder="Album Title">
+                        <input type="text" class="form-control" id="ablum_des" name="album_name"
+                            placeholder="Album Title">
                     </div>
 
                     <div class="col-3 mb-3">
                         <label for="album_des" class="form-label">Album Description</label>
-                        <input type="text" class="form-control" id="ablum_title" name="description" placeholder="Album Description">
+                        <input type="text" class="form-control" id="ablum_title" name="description"
+                            placeholder="Album Description">
                     </div>
                     <div class="col-1 ">
                         <br>
@@ -59,15 +75,6 @@ if ($userprofile == true) {
                 </div>
             </form><br>
         </div>
-        <?php
-        // if (isset($_GET['add_album_action'])) {
-        //     if ($_GET['add_album_action'] == "successfull") {
-        ?>
-        <!-- <br>New album created!<br><br> -->
-        <?php
-        //  }
-        //     }
-        ?>
 
 
         <div class="grid-container container  mt-2">
@@ -77,37 +84,53 @@ if ($userprofile == true) {
 
             $myalbumlist = "SELECT * FROM gallery_albums";
             $result = $conn->query($myalbumlist);
+
             while ($album_data = $result->fetch_assoc()) {
                 $photos = $conn->query("SELECT * FROM gallery_photos WHERE album_id = " . $album_data['album_id'] . ""); ?>
-                <div class="grid-item">
+            <div class="grid-item">
 
-                    <div class="album-icon ">
-                        <i class="fa-solid fa-folder fa-5x"></i>
+                <div class="album-icon ">
+                    <i class="fa-solid fa-folder fa-5x"></i>
 
-                    </div>
-                    <div class="album-data  ">
+                </div>
+                <div class="album-data  ">
 
-                        <!-- <b>#<?php echo $album_data['album_id'] ?></b> -->
-                        <a href="view-album.php?album_id=<?php echo $album_data['album_id'] ?>"><?php echo $album_data['album_name'] ?>
+                    <!-- <b>#<?php echo $album_data['album_id'] ?></b> -->
+                    <a href="view-album.php?album_id=<?php echo $album_data['album_id'] ?>"><?php echo $album_data['album_name'] ?>
 
-                        </a>
+                    </a>
 
-                        <?php
-                        // echo "<input type='radio' name='status' value='1' " . ($album_data['publish'] == 1 ? "checked" : "") . ">Publish ";
-                        // echo "<input type='radio' name='status' value='0' " . ($album_data['publish'] == 0 ? "checked" : "") . ">Unpubl  ish ";
-                        ?>
-                        (<?php echo $photos->num_rows; ?>)<br><br>
 
-                        <?php echo $album_data['description'] ?>
-                    </div>
-                    <div>
-                        <select class="btn border mb-2 " name="" id="">
+                    (<?php echo $photos->num_rows; ?>)<br><br>
+
+                    <?php echo $album_data['description'] ?>
+                </div>
+                <div>
+                    <form action="<?php $_PHP_SELF ?>" method="post">
+
+                        <select class="btn border mb-2 " name="publish" id="">
+                            <?php if ($album_data['publish'] == 1) { ?>
+
                             <option class="btn" value="1">Publish</option>
                             <option class="btn" value="0">Unpublish</option>
+
+                            <?php } else { ?>
+                            <option class="btn" value="0">Unpublish</option>
+                            <option class="btn" value="1">Publish</option>
+                            <?php
+
+                                } ?>
                         </select>
-                        <input type="submit" class=" btn btn-primary mt-2" value="Update">
-                    </div>
+                        <input type="text" class="d-none" value="<?php echo $album_data['album_id'] ?>" name="id">
+
+
+                        <input type="submit" name="" class=" btn btn-primary mt-2" value="Update">
+                        <a class="btn btn-danger"
+                            href="delete-album.php?album_id=<?php echo $album_data['album_id'] ?>"> <i
+                                class="fa-solid fa-trash" style="font-size:24px"></i> </a>
+                    </form>
                 </div>
+            </div>
             <?php }
             ?>
         </div>

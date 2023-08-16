@@ -19,6 +19,22 @@ if ($userprofile == true) {
 }
 ?>
 
+<!-- Google Authentication  -->
+<?php
+if (!isset($_SESSION['login_id'])) {
+    header('Location: login.php');
+    exit;
+}
+$id = $_SESSION['login_id'];
+$get_user = mysqli_query($conn, "SELECT * FROM `users` WHERE `google_id`='$id'");
+if (mysqli_num_rows($get_user) > 0) {
+    $user = mysqli_fetch_assoc($get_user);
+} else {
+    header('Location: logout.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -49,59 +65,67 @@ if ($userprofile == true) {
                 $result = $conn->query($myalbumlist);
                 while ($album_data = $result->fetch_assoc()) {
                     $photos = $conn->query("SELECT * FROM gallery_photos WHERE album_id = " . $album_data['album_id'] . ""); ?>
-                    <div class="grid-item">
+            <div class="grid-item">
 
-                        <div class="album-icon ">
-                            <!-- <h5>NORMAL USER</h5> -->
-                            <i class="fa-solid fa-folder fa-5x"></i>
+                <div class="album-icon ">
+                    <!-- <h5>NORMAL USER</h5> -->
+                    <i class="fa-solid fa-folder fa-5x"></i>
 
-                        </div>
-                        <div class="album-data  ">
+                </div>
+                <div class="album-data  ">
 
-                            <!-- <b>#<?php echo $album_data['album_id'] ?></b> -->
-                            <a href="user_view_album.php?album_id=<?php echo $album_data['album_id'] ?>"><?php echo $album_data['album_name'] ?>
+                    <!-- <b>#<?php echo $album_data['album_id'] ?></b> -->
+                    <a href="user_view_album.php?album_id=<?php echo $album_data['album_id'] ?>"><?php echo $album_data['album_name'] ?>
 
-                            </a>
+                    </a>
 
-                            <?php
+                    <?php
                             ?>
-                            (<?php echo $photos->num_rows; ?>)<br><br>
+                    (<?php echo $photos->num_rows; ?>)<br><br>
 
-                            <?php echo $album_data['description'] ?>
-                        </div>
+                    <?php echo $album_data['description'] ?>
+                </div>
 
-                    </div>
-                <?php }
+            </div>
+            <?php }
             } else if ($userType == 'user') {
                 $myalbumlist = "SELECT * FROM gallery_albums where publish = 0";
                 $result = $conn->query($myalbumlist);
                 while ($album_data = $result->fetch_assoc()) {
                     $photos = $conn->query("SELECT * FROM gallery_photos WHERE album_id = " . $album_data['album_id'] . ""); ?>
-                    <div class="grid-item">
+            <div class="grid-item">
 
-                        <div class="album-icon ">
-                            <i class="fa-solid fa-folder fa-5x"></i>
+                <div class="album-icon ">
+                    <i class="fa-solid fa-folder fa-5x"></i>
 
-                        </div>
-                        <div class="album-data  ">
+                </div>
+                <div class="album-data  ">
 
-                            <!-- <b>#<?php echo $album_data['album_id'] ?></b> -->
-                            <a href="user_view_album.php?album_id=<?php echo $album_data['album_id'] ?>"><?php echo $album_data['album_name'] ?>
+                    <!-- <b>#<?php echo $album_data['album_id'] ?></b> -->
+                    <a href="user_view_album.php?album_id=<?php echo $album_data['album_id'] ?>"><?php echo $album_data['album_name'] ?>
 
-                            </a>
+                    </a>
 
-                            <?php
+                    <?php
                             ?>
-                            (<?php echo $photos->num_rows; ?>)<br><br>
+                    (<?php echo $photos->num_rows; ?>)<br><br>
 
-                            <?php echo $album_data['description'] ?>
-                        </div>
+                    <?php echo $album_data['description'] ?>
+                </div>
 
-                    </div>
+            </div>
             <?php
                 }
             }
             ?>
+        </div>
+        <div class="_img">
+            <img src="<?php echo $user['profile_image']; ?>" alt="<?php echo $user['name']; ?>">
+        </div>
+        <div class="_info">
+            <h1><?php echo $user['name']; ?></h1>
+            <p><?php echo $user['email']; ?></p>
+            <a href="logout.php">Logout</a>
         </div>
 
     </div>
