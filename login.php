@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "username or password not ";
         }
     } else { ?>
-<!-- <script>
+        <!-- <script>
             window.alert("Password Incorrect!!");
         </script> -->
 <?php
@@ -119,6 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="login.css">
 
 
@@ -127,49 +128,75 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
     <div class="login-page bg-light">
-        <div class="container">
+
+
+        <div class="container card w-25">
+            <div class="row border">
+                <h3>Login</h3>
+
+            </div>
+            <div class="row  border">
+                <p>Don't have account? <a href="signup.php">sign up</a></p>
+            </div>
+            <div class="row border">
+                <div class="col-md-12 pe-0">
+                    <div class="form-left h-100 py-5 px-5">
+                        <form action="#" method="POST" class="row g-4">
+                            <div class="col-12">
+                                <label>Username<span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+                                    <input type="text" class="form-control" name="username" placeholder="Enter Username">
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <label>Password<span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
+                                    <input type="password" class="form-control" name="password" placeholder="Enter Password">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-7">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="inlineFormCheck">
+                                    <label class="form-check-label" for="inlineFormCheck">Remember
+                                        me</label>
+                                </div>
+                            </div>
+
+
+                            <div class="col-5">
+                                <button type="submit" class="btn btn-primary px-4 float-end mt-4">login</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row border text-center">
+                <span>
+                    or
+                </span>
+            </div>
+            <div class="row border text-center">
+                <div class="col-4 p-2"><i class="fa-brands fa-google-plus-g fa-2x" style="color: #b31b00;"></i></div>
+                <div class="col-4 p-2"><i class="fa-brands fa-facebook fa-2x" style="color: #0e52c8;"></i></div>
+                <div class="col-4 p-2"><i class="fa-brands fa-github fa-2x" style="color: #000000;"></i></div>
+            </div>
+        </div>
+
+
+
+
+        <!-- <div class="container">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
                     <h3 class="mb-3">Login Now</h3>
                     <div class="bg-white shadow rounded">
                         <div class="row">
-                            <div class="col-md-7 pe-0">
-                                <div class="form-left h-100 py-5 px-5">
-                                    <form action="#" method="POST" class="row g-4">
-                                        <div class="col-12">
-                                            <label>Username<span class="text-danger">*</span></label>
-                                            <div class="input-group">
-                                                <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                                                <input type="text" class="form-control" name="username"
-                                                    placeholder="Enter Username">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12">
-                                            <label>Password<span class="text-danger">*</span></label>
-                                            <div class="input-group">
-                                                <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                                                <input type="password" class="form-control" name="password"
-                                                    placeholder="Enter Password">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="inlineFormCheck">
-                                                <label class="form-check-label" for="inlineFormCheck">Remember
-                                                    me</label>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="col-4">
-                                            <button type="submit"
-                                                class="btn btn-primary px-4 float-end mt-4">login</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
                             <div class="col-md-5 ps-0 d-none d-md-block">
                                 <div class="form-right h-100 bg-primary text-white text-center pt-5">
                                     <img class="w-100 login-img" src="./image/image-cave-logo.png" alt="">
@@ -178,18 +205,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </div>
                             </div>
                         </div>
+
                     </div>
-                    <!-- <p class="text-end text-secondary mt-3">Bootstrap 5 Login Page Design</p> -->
+               
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <!-- Bootstrap JS -->
 
 </body>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+
 </html>
+
+
 
 <?php
 // endif;
